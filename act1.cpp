@@ -36,10 +36,8 @@ int OTresNMasUnoRecursiva(int n) {
     if (n == 1) { // Caso base: si n es 1, devuelve 1
         return 1;
     } else if (n % 2 == 0) { // Caso recursivo: si n es par, divide n entre 2
-        cout << n << " ";
         return OTresNMasUnoRecursiva(n / 2);
     } else { // Caso recursivo: si n es impar, multiplica n por 3 y suma 1
-        cout << n << " ";
         return OTresNMasUnoRecursiva(3 * n + 1);
     }
 }
@@ -48,10 +46,8 @@ int OTresNMasUnoRecursiva(int n) {
 int OTresNMasUnoIterativa(int n) { 
     while (n != 1) { // Mientras n no sea 1
         if (n % 2 == 0) { // Si n es par, divide n entre 2
-            cout << n << " ";
             n /= 2;
         } else { // Si n es impar, multiplica n por 3 y suma 1
-            cout << n << " ";
             n = 3 * n + 1;
         }
     }
@@ -66,8 +62,14 @@ int main() {
     cout << sumaRecursiva(n) << " Complejidad: O(n)" << endl; // Imprime la suma calculada de forma recursiva
     cout << sumaDirecta(n) << " Complejidad: O(1)" << endl; // Imprime la suma calculada directamente
 
-    cout << OTresNMasUnoRecursiva(n) << " Complejidad: O(n)" << endl; // Imprime el resultado de la función recursiva
-    cout << OTresNMasUnoIterativa(n) << " Complejidad: O(n)" << endl; // Imprime el resultado de la función iterativa
+    // Cálculo del total de pasos para el problema 3n+1
+    cout << "Pasos necesarios para llegar a 1 usando 3n+1 (recursiva) para " << n << ": " << OTresNMasUnoRecursiva(n) << endl;
+    cout << "Pasos necesarios para llegar a 1 usando 3n+1 (iterativa) para " << n << ": " << OTresNMasUnoIterativa(n) << endl;
+
+    // Cálculo del total de pasos para los primeros 100 enteros
+    for (int i = 1; i <= 100; i++) {
+        cout << "Numero: " << i << " - Pasos: " << OTresNMasUnoIterativa(i) << endl;
+    }
 
     return 0;
 }
